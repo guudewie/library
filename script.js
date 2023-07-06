@@ -31,11 +31,12 @@ window.onclick = function(event) {
 }
 
 MYFORM.addEventListener("submit", function(event) {
-
-    let newBook = new Book(NAME.value, AUTHOR.value, PAGES.value, READ.value);
+    let BookOne = new Book(NAME.value, AUTHOR.value, PAGES.value, READ.checked);
+    myLibrary.push(BookOne);
     closeModalAndResetForm();
     event.preventDefault();
 
+    console.log(myLibrary)
 })
 
 
