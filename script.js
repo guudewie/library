@@ -6,7 +6,6 @@
 
 
 
-
 //query selectors
 OPEN_MODAL_BTN = document.getElementById("add-book")
 MODAL = document.getElementById("modal")
@@ -24,6 +23,20 @@ OPEN_MODAL_BTN.onclick = function () {
     MODAL.style.display = "flex";
 }
 
+
+
+function deleteCard() {
+
+    let cardsDeleteIcons = document.querySelectorAll(".book>span")
+
+    cardsDeleteIcons.forEach(() => {
+        addEventListener("click", () => {console.log()})
+    });
+
+    //cardToBeDeleted.remove()
+}
+
+
 window.onclick = function(event) {
     if (event.target == MODAL) {
       MODAL.style.display = "none";
@@ -38,9 +51,9 @@ MYFORM.addEventListener("submit", function(event) {
     closeModalAndResetForm();
 
     event.preventDefault();
-
-    console.log(myLibrary)
+    deleteCard()
 })
+
 
 
 function closeModalAndResetForm() {
@@ -52,20 +65,15 @@ function closeModalAndResetForm() {
 let myLibrary = [];
 
 
-// the constructor...
 function Book(name, author, pages, read) {
 
     this.name = name;
     this.author = author;
     this.pages = pages;
     this.read = read;
-
 }
 
 function addBookToLibrary(book) {
-        
-let lol = 69;
-console.log(book.name)
 
     BOOK_GRID.insertAdjacentHTML(
         "beforeend",
@@ -86,13 +94,25 @@ console.log(book.name)
         </div>`
     );
 
-    let index = myLibrary.length;
+    let index = myLibrary.length-1;
 
     //associate DOM element with actual book object
-    let recentBook = document.querySelector("#main:last-child");
+    let recentBook = BOOK_GRID.lastChild;
     recentBook.setAttribute("data-index",index)
-
     console.log(recentBook)
+
+    // associating index to delete-icon via data-index
+    let IconOfRecentBook = document.querySelector("#main :last-child > span")
+    IconOfRecentBook.setAttribute("data-index", index)
+
+    IconOfRecentBook.addEventListener("click", () => {
+
+        let index = IconOfRecentBook.getAttribute("data-index");
+
+        let associatedCard = document.querySelectorAll(`.book[data-index="${index}"]`)
+        associatedCard.forEach( (element) => element.remove())
+    
+    });
 };
 
 

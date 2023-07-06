@@ -41,13 +41,14 @@ button {
 .book {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
     position: relative;
 
     padding: 2rem 1.4rem 1.2rem 1.4rem;
     background: rgb(229, 241, 229);
-    height: fit-content;
-    width: fit-content;
+    height: 12rem;
+    width: 8rem;
     border-radius: 10px;
 }
 
