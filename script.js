@@ -97,18 +97,3 @@ console.log(book.name)
 
 
 
-/*
-
-BOOK_GRID.insertAdjacentHTML(
-        "beforeend",
-        `<div class="book">
-            <span class="delete-card material-symbols-outlined">close</span>
-            <div id="title-card"">${book.name}</div>
-            <div id="author-card">${book.author}</div>
-            <div id="pages-card">${book.pages}</div>
-            <div id="read-card">${book.read}</div>
-        </div>`
-    );
-
-
-*/
