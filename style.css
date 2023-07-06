@@ -2,6 +2,7 @@ body,
 html {
     border: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -29,9 +30,55 @@ button {
 
 .main {
     grid-row: 2 / -1;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
 
-    background-color: white;
+    padding: 2rem;
 }
+
+.book {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+
+    padding: 2rem 1.4rem 1.2rem 1.4rem;
+    background: rgb(229, 241, 229);
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.delete-card {
+    align-self: flex-end;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.container-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.label {
+    opacity: .4;
+    font-weight: 200;
+    font-size: .9rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
 
 .modal {
     display: none;

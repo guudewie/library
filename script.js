@@ -19,7 +19,7 @@ PAGES = document.getElementById("pages")
 READ = document.getElementById("read")
 
 
-//event listener
+//event listeners
 OPEN_MODAL_BTN.onclick = function () {
     MODAL.style.display = "flex";
 }
@@ -33,22 +33,21 @@ window.onclick = function(event) {
 MYFORM.addEventListener("submit", function(event) {
     let BookOne = new Book(NAME.value, AUTHOR.value, PAGES.value, READ.checked);
     myLibrary.push(BookOne);
+    
     closeModalAndResetForm();
     event.preventDefault();
 
-    console.log(myLibrary)
+//    console.log(myLibrary)
 })
 
 
 function closeModalAndResetForm() {
     MYFORM.reset()
     MODAL.style.display = "none";
-    
 };
 
 
 let myLibrary = [];
-
 
 
 // the constructor...
