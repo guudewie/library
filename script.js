@@ -17,7 +17,7 @@ NAME = document.getElementById("name")
 AUTHOR = document.getElementById("author")
 PAGES = document.getElementById("pages")
 READ = document.getElementById("read")
-
+BOOK_GRID = document.getElementById("main")
 
 //event listeners
 OPEN_MODAL_BTN.onclick = function () {
@@ -31,13 +31,15 @@ window.onclick = function(event) {
 }
 
 MYFORM.addEventListener("submit", function(event) {
-    let BookOne = new Book(NAME.value, AUTHOR.value, PAGES.value, READ.checked);
-    myLibrary.push(BookOne);
+    let book = new Book(NAME.value, AUTHOR.value, PAGES.value, READ.checked);
+    myLibrary.push(book);
     
+    addBookToLibrary(book);
     closeModalAndResetForm();
+
     event.preventDefault();
 
-//    console.log(myLibrary)
+    console.log(myLibrary)
 })
 
 
@@ -60,9 +62,53 @@ function Book(name, author, pages, read) {
 
 }
 
+function addBookToLibrary(book) {
+        
+let lol = 69;
+console.log(book.name)
+
+    BOOK_GRID.insertAdjacentHTML(
+        "beforeend",
+        `<div class="book">
+            <span class="delete-card material-symbols-outlined">close</span>
+            <div class="container-card">
+                <div class="label title">Title</div>
+                <div id="title-card"">${book.name}</div>
+            <div class="container-card">
+                <div class="label author">Author</div>
+                <div id="author-card">${book.author}</div>
+            <div class="container-card">
+                <div class="label pages">Pages</div>
+                <div id="pages-card">${book.pages}</div>
+            <div class="container-card">
+                <div class="label read">Read</div>
+                <div id="read-card">${book.read}</div>
+        </div>`
+    );
+
+    let index = myLibrary.length;
+
+    //associate DOM element with actual book object
+    let recentBook = document.querySelector("#main:last-child");
+    recentBook.setAttribute("data-index",index)
+
+    console.log(recentBook)
+};
 
 
-// do stuff here
-function addBookToLibrary() {
 
-}
+/*
+
+BOOK_GRID.insertAdjacentHTML(
+        "beforeend",
+        `<div class="book">
+            <span class="delete-card material-symbols-outlined">close</span>
+            <div id="title-card"">${book.name}</div>
+            <div id="author-card">${book.author}</div>
+            <div id="pages-card">${book.pages}</div>
+            <div id="read-card">${book.read}</div>
+        </div>`
+    );
+
+
+*/
