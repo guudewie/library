@@ -1,8 +1,6 @@
 /****************** TO DO *************************/
 
-// event listener delete book
-// display books in array
-// add book to array
+// 
 
 
 
@@ -18,30 +16,18 @@ PAGES = document.getElementById("pages")
 READ = document.getElementById("read")
 BOOK_GRID = document.getElementById("main")
 
-//event listeners
+//EVENT LISTENERS START
 OPEN_MODAL_BTN.onclick = function () {
     MODAL.style.display = "flex";
 }
 
-
-
-function deleteCard() {
-
-    let cardsDeleteIcons = document.querySelectorAll(".book>span")
-
-    cardsDeleteIcons.forEach(() => {
-        addEventListener("click", () => {console.log()})
-    });
-
-    //cardToBeDeleted.remove()
-}
-
-
+//close modal when clicking outside of it
 window.onclick = function(event) {
     if (event.target == MODAL) {
       MODAL.style.display = "none";
     }
 }
+
 
 MYFORM.addEventListener("submit", function(event) {
     let book = new Book(NAME.value, AUTHOR.value, PAGES.value, READ.checked);
@@ -51,19 +37,17 @@ MYFORM.addEventListener("submit", function(event) {
     closeModalAndResetForm();
 
     event.preventDefault();
-    deleteCard()
 })
 
 
+// FUNCTIONS START
+
+let myLibrary = [];
 
 function closeModalAndResetForm() {
     MYFORM.reset()
     MODAL.style.display = "none";
 };
-
-
-let myLibrary = [];
-
 
 function Book(name, author, pages, read) {
 
@@ -96,15 +80,16 @@ function addBookToLibrary(book) {
 
     let index = myLibrary.length-1;
 
-    //associate DOM element with actual book object
+    //associate DOM element (book) with actual book object via data-index attribute
     let recentBook = BOOK_GRID.lastChild;
     recentBook.setAttribute("data-index",index)
     console.log(recentBook)
 
-    // associating index to delete-icon via data-index
+    //associate DOM element (close icon) with actual book object via data-index attribute
     let IconOfRecentBook = document.querySelector("#main :last-child > span")
     IconOfRecentBook.setAttribute("data-index", index)
 
+    // add event listener to delete respective book 
     IconOfRecentBook.addEventListener("click", () => {
 
         let index = IconOfRecentBook.getAttribute("data-index");
