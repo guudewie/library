@@ -98,7 +98,6 @@ button.read {
     grid-template-columns: repeat(auto-fit, 15rem);
     gap: 15px;
     justify-items: center;
-
     padding: 2rem;
 }
 
